@@ -7,19 +7,29 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+html {
+    /* We want 10 pixels here. So what we do is: */
+    /* 10/16 * 100 = 62.5% */
+    /* 16 is the default font size */
+    font-size: 62.5%;
+    /* This allows the user to zoom in and change font size comfortably */
 }
 
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+    box-sizing: border-box;
 }
 
 .header {
@@ -33,47 +43,36 @@ body {
 
 .logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
 }
 
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
-    /* you can change casing of letters using CSS */
-    margin-bottom: 60px;
-
+    margin-bottom: 6rem;
     backface-visibility: hidden;
-    /* it's important to put this in parent container to prevent CSS animation 'shakiness' */
 }
 
 .heading-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInUp;
     animation-duration: 1s;
-    /* Note : The main two properties we need for animation are animation-name and animation-duration */
-
-    /* Other properties :  */
-    /* 
-        animation-delay: 1s;
-        animation-iteration-count: 2;
-        animation-timing-function: ease-in;
-     */
 }
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 19.4px;
+    letter-spacing: 1.64rem;
     animation-name: moveInRight;
     animation-duration: 1s;
 }
@@ -84,84 +83,64 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    /*  translate is in relation to the element itself, so it would move it half way
-        both horizontally and vertically */
 }
 
-/* Note : moveInUp is name of animation */
-/* Note : Browsers are optimized for opacity and transform properties, so try to use them the most */
 @keyframes moveInUp {
     0% {
         opacity: 0;
-        transform: translateY(-100px);
+        transform: translateY(-10rem);
     }
 
     100% {
         opacity: 1;
-        transform: translateY(0px);
+        transform: translateY(0);
     }
 }
 
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px);
-        /* Note : translateX because we are moving horizontally and negative values because left to right */
+        transform: translateX(10rem);
     }
 
     100% {
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateX(0);
     }
 }
 
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(100px);
-        /* Note : translateX because we are moving horizontally and negative values because left to right */
+        transform: translateY(10rem);
     }
 
     100% {
         opacity: 1;
-        transform: translateY(0px);
+        transform: translateY(0);
     }
 }
-
-/*
-Styling a-tags:
-    .btn:visited {} <= How a tag (link) would look after user clicks on it
-    .btn:link {} <= How link looks normally
-    .btn:active {} <= How link looks the moment it is clicked
-*/
 
 .btn:link, .btn:visited {
     position: relative;
     text-transform: uppercase;
     text-decoration: none;
     display: inline-block;
-    padding: 15px 40px;
-    border-radius: 100px;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
     transition: all 0.2s;
-    /* transition is the second way of animation.
-       In this case we're adding transition to all properties.
-       In other words, all properties take 0.2seconds to load and show on screen.
-       AND all properties take 0.2s to take effect. So :hover and :active would take 
-       0.2s to show properly */
+    font-size: 1.6rem;
 }
 
 
 .btn:hover {
-    /* Makes button go up on hover */
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    /* box-shadow: x y blur color */
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
-    /* Make button go down on click (this is in relation to the higher position that it was at) */
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5px 0.1px rgba(0, 0, 0, 0.2);
 }
 
 .btn-white {
@@ -170,14 +149,11 @@ Styling a-tags:
 }
 
 .btn::after {
-    /* A pseudo element gets created when we have :: */
-    /* You need to have content and display properties for pseudo elements */
-    /* In this case, we are putting a pseudo element underneath our .btn element(s) */
     content: "";
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     right: 0;
@@ -190,14 +166,11 @@ Styling a-tags:
 }
 
 .btn:hover::after {
-    /* What happens to pseudo element after hover */
     transform: scale(1.5);
-    opacity: 0; /* making it disappear after hover */
+    opacity: 0;
 }
 
 .btn-animated {
     animation: moveInBottom 1s ease-out 0.75s;
-    /* name duration  timing-function delay */
     animation-fill-mode: backwards;
-    /* ^^^ Applies the first animation styles from moveInBottom */
 }
