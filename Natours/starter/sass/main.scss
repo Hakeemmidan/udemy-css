@@ -3,6 +3,7 @@ $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
 $color-gray-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 *,
 *::after,
@@ -34,50 +35,51 @@ body {
     object-fit: cover;
     background-position: top;
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;    
+    }
+
+    &__logo {
+        height: 3.5rem;    
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
 }
 
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
 
-.header__logo {
-    height: 3.5rem;
-}
 
 .heading-primary {
     color: $color-white;
     text-transform: uppercase;
     margin-bottom: 6rem;
     backface-visibility: hidden;
-}
+    
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation-name: moveInUp;
+        animation-duration: 1s;
+    }
 
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-
-    animation-name: moveInUp;
-    animation-duration: 1s;
-}
-
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.64rem;
-    animation-name: moveInRight;
-    animation-duration: 1s;
-}
-
-.header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.64rem;
+        animation-name: moveInRight;
+        animation-duration: 1s;
+    }
 }
 
 @keyframes moveInUp {
@@ -116,56 +118,57 @@ body {
     }
 }
 
-.btn:link, .btn:visited {
-    position: relative;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-block;
-    padding: 1.5rem 4rem;
-    border-radius: 10rem;
-    transition: all 0.2s;
-    font-size: 1.6rem;
-}
+.btn {
+    &:link, &:visited {
+        position: relative;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: inline-block;
+        padding: 1.5rem 4rem;
+        border-radius: 10rem;
+        transition: all 0.2s;
+        font-size: 1.6rem;
+    }
 
+    &:hover {
+        transform: translateY(-0.3rem);
+        box-shadow: 0 0.1rem 0.2rem rgba($color-black 0.2);
 
-.btn:hover {
-    transform: translateY(-0.3rem);
-    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
-}
+        &::after {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
 
-.btn:active {
-    transform: translateY(-0.1rem);
-    box-shadow: 0 0.5px 0.1px rgba(0, 0, 0, 0.2);
-}
+    &:active {
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.5px 0.1px rgba($color-black 0.2);
+    }
 
-.btn--white {
-    background-color: $color-white;
-    color: $color-gray-dark;
-}
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        transition: all 0.4s;
+    }
 
-.btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    transition: all 0.4s;
-}
+    &--white {
+        background-color: $color-white;
+        color: $color-gray-dark;
 
-.btn--white::after {
-    background-color: $color-white;
-}
-
-.btn:hover::after {
-    transform: scale(1.5);
-    opacity: 0;
-}
-
-.btn--animated {
-    animation: moveInBottom 1s ease-out 0.75s;
-    animation-fill-mode: backwards;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    
+    &--animated {
+        animation: moveInBottom 1s ease-out 0.75s;
+        animation-fill-mode: backwards;
+    }
 }
