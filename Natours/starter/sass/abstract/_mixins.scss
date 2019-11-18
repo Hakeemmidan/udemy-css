@@ -1,0 +1,9 @@
+// clearfix is used to show height of floating elements;
+
+@mixin claerfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
