@@ -1,7 +1,6 @@
 .row {
     max-width: $grid-width;
-    background-color: #eee;
-    margin: 0 auto; // margin on top and bottom is 0. left and right is auto
+    margin: 0 auto;
     
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;       
@@ -9,9 +8,7 @@
 
     @include claerfix;
 
-    // select all elements that have class name that starts with 'col-'
     [class^="col-"] {
-        background-color: $color-column;
         float: left;
 
         &:not(:last-child) {
@@ -21,8 +18,6 @@
 
     .col-1-of-2 {
         width: calc((100% - #{$gutter-horizontal}) / 2);
-        // you use #{} for SCSS into CSS variable interpolation
-            // The calc function is CSS specific
     }
 
     .col-1-of-3 {
@@ -30,7 +25,6 @@
     }
 
     .col-2-of-3 {
-        // 2 * col-1-of-3 + gutter width
         width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
     }
 
