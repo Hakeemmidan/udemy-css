@@ -73,11 +73,24 @@ body {
   color: transparent;
   letter-spacing: 2px; }
 
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
 .u-center-text {
   text-align: center; }
 
-.u-margin-bottom-8 {
+.u-margin-bottom-big {
   margin-bottom: 8rem; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
 
 .section-about {
   background-color: #f7f7f7;
@@ -126,6 +139,26 @@ body {
 .btn--animated {
   animation: moveInBottom 1s ease-out 0.75s;
   animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.3rem;
+  border-bottom: 0.1rem solid #55c57a;
+  transition: all 0.2s ease-in-out; }
+
+.btn-text:hover {
+  color: #fff;
+  background-color: #7ed56f;
+  border-bottom: none;
+  transform: translateY(-0.2rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
 
 .row {
   max-width: 114rem;

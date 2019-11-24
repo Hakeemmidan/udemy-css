@@ -42,3 +42,16 @@ body {
     color: transparent; // so we can see background image
     letter-spacing: 2px;
 }
+
+.heading-tertiary {
+    font-size: $default-font-size;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    font-size: $default-font-size;
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+}
